@@ -35,13 +35,13 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(AudioELed AudioELed.c )
+add_executable(AudioELed AudioELed.c inc/ssd1306_i2c.c)
 
 pico_set_program_name(AudioELed "AudioELed")
 pico_set_program_version(AudioELed "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(AudioELed 1)
+pico_enable_stdio_uart(AudioELed 0)
 pico_enable_stdio_usb(AudioELed 1)
 
 # Add the standard library to the build
@@ -55,8 +55,12 @@ target_include_directories(AudioELed PRIVATE
 
 # Add any user requested libraries
 target_link_libraries(AudioELed 
-    hardware_pio
+    # hardware_pio
     hardware_i2c
+    # inc/ssd1306_i2c.c
+    # inc/ssd1306.c
+
+
         )
 
 pico_add_extra_outputs(AudioELed)
