@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "author": "Reinan Lopes Argolo",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 140.85,
+      "left": 22.8,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-neopixel-matrix",
+      "id": "neopixels",
+      "top": 30.6,
+      "left": -83.34,
+      "attrs": {
+        "rows": "5",
+        "cols": "5",
+        "matrixLayout": "serpentine"
+      }
+    },
+    {
+        "type": "wokwi-buzzer",
+        "id": "bz1",
+        "top": 0.8,
+        "left": 100.6,
+        "attrs": { "volume": "0.1" }
+    },
+    {"type": "board-ssd1306", "id": "oled1", "top": 325.54, "left": -100.57, "attrs": {}}
+  ],
+  "connections": [
+    ["neopixels:DIN", "pico:GP7", "green", ["v0"]],
+    ["neopixels:VCC", "pico:VBUS", "red", ["v0"]],
+    ["neopixels:GND", "pico:GND.8", "black", ["v0"]],
+    [ "bz1:2", "pico:GP14", "green", [ "v0" ] ], 
+    [ "bz1:1", "pico:GND.1", "black", [ "v0" ] ],
+    [ "oled1:SCL", "pico:GP15", "green", [ "v0" ] ],
+    [ "oled1:GND", "pico:GND.7", "black", [ "v-86.4", "h152.4"] ],
+    [ "pico:3V3", "oled1:VCC", "red", [ "v-0.01", "h1.98", "v124.81", "h-144.93" ] ],
+    [ "pico:GP14", "oled1:SDA", "yellow", [ "h-57.6", "v67.2" ] ]
+  ],
+  "dependencies": {}
+}
